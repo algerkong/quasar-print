@@ -7,3 +7,15 @@ declare namespace NodeJS {
     VUE_ROUTER_BASE: string | undefined;
   }
 }
+
+export {};
+
+declare global {
+  interface Window {
+    electronAPI: {
+      sendMessage: (channel: string, data?: any) => void;
+      receiveMessage: (channel: string, func: (...args: any[]) => void) => void;
+      invokeMessage: (channel: string, ...args: any[]) => Promise<any>;
+    };
+  }
+}

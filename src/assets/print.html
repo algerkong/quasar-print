@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打印小票</title>
+</head>
+
+<body>
+  <div id="printMain"></div>
+  <script>
+    const electron = window.electronAPI
+    electron.receiveMessage('print', (data) => {
+      document.getElementById('printMain').innerHTML = data
+      electron.sendMessage('print-load')
+    })
+  </script>
+</body>
+
+</html>

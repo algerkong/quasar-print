@@ -16,7 +16,7 @@ export default configure((/* ctx */) => {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      
+
       'axios',
     ],
 
@@ -58,7 +58,7 @@ export default configure((/* ctx */) => {
       // env: {},
       // rawDefine: {}
       // ignorePublicFolder: true,
-      // minify: false,
+      minify: false,
       // polyfillModulePreload: true,
       // distDir
 
@@ -98,7 +98,9 @@ export default configure((/* ctx */) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -180,7 +182,7 @@ export default configure((/* ctx */) => {
       // specify the debugging port to use for the Electron app when running in development mode
       inspectPort: 5858,
 
-      bundler: 'packager', // 'packager' or 'builder'
+      bundler: 'builder', // 'packager' or 'builder'
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
@@ -197,8 +199,14 @@ export default configure((/* ctx */) => {
 
       builder: {
         // https://www.electron.build/configuration/configuration
-
-        appId: 'quasar-project'
+        appId: 'print-demo',
+        win: {
+          publisherName: 'print-demo-ia32',
+          target: {
+            target: 'nsis',
+            arch: ['ia32']
+          }
+        }
       }
     },
 
